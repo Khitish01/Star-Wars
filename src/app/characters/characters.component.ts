@@ -65,10 +65,10 @@ export class CharactersComponent implements OnInit {
     this.swapiService.getAll('people').subscribe((data: any) => {
       this.peopleData = data;
       this.birthDateArr = [...new Set(this.peopleData.flatMap((x: any) => x?.birth_year))]
-      console.log(this.birthDateArr);
+      // console.log(this.birthDateArr);
       this.filteredData = this.peopleData;
       this.loaderService.isLoading.next(false)
-      console.log(data);
+      // console.log(data);
     });
   }
 
@@ -77,31 +77,31 @@ export class CharactersComponent implements OnInit {
     this.swapiService.getMovieList().subscribe((data: any) => {
       // debugger
       this.movieData = data.results
-      console.log(this.movieData);
+      // console.log(this.movieData);
     });
   }
   getPlanetList() {
     this.swapiService.getAll('planets').subscribe((data: any) => {
       this.planetData = data
-      console.log(data);
+      // console.log(data);
     });
   }
   getSpeciesList() {
     this.swapiService.getAll('species').subscribe((data: any) => {
       this.speciesData = data
-      console.log(data);
+      // console.log(data);
     });
   }
   getVehicleList() {
     this.swapiService.getAll('vehicles').subscribe((data: any) => {
       this.vehicleData = data
-      console.log(data);
+      // console.log(data);
     });
   }
   getStarshipList() {
     this.swapiService.getAll('starships').subscribe((data: any) => {
       this.starshipData = data
-      console.log(data);
+      // console.log(data);
     });
   }
 
@@ -126,7 +126,7 @@ export class CharactersComponent implements OnInit {
       })
     }
 
-    console.log(this.peopleData);
+    // console.log(this.peopleData);
 
   }
   resetFilter() {

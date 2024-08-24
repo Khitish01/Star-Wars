@@ -38,10 +38,10 @@ export class CharactersDetailsComponent implements OnInit {
       this.getMovieDetails(this.personDetails?.films)
       this.getVehicleDetails(this.personDetails?.vehicles)
       this.getStarShipDetails(this.personDetails?.starships)
-      console.log(res);
+      // console.log(res);
       this.loaderService.isLoading.next(false)
     }, error => {
-      console.log(error?.error?.detail);
+      // console.log(error?.error?.detail);
       if (error?.error?.detail == 'Not found') {
         this.isInvalidCharacter = true;
         this.loaderService.isLoading.next(false)
@@ -53,7 +53,7 @@ export class CharactersDetailsComponent implements OnInit {
     // debugger
     this.loaderService.isLoading.next(true)
     this.swapiService.getPlanetDetailsById(planetUrl).subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       this.personDetails['planet_name'] = res?.name;
       this.loaderService.isLoading.next(false)
     })
@@ -62,7 +62,7 @@ export class CharactersDetailsComponent implements OnInit {
   getSpeciesNames(planetUrl: String[]) {
     this.loaderService.isLoading.next(true)
     this.swapiService.getDetailsById(planetUrl).subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       this.personDetails['species_name'] = res.flatMap((x: any) => x?.name).join(',');
       this.loaderService.isLoading.next(false);
     })
@@ -71,7 +71,7 @@ export class CharactersDetailsComponent implements OnInit {
   getMovieDetails(movieUrl: String[]) {
     this.loaderService.isLoading.next(true)
     this.swapiService.getDetailsById(movieUrl).subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       this.personDetails['movie_details'] = res;
       this.loaderService.isLoading.next(false);
     })
@@ -80,7 +80,7 @@ export class CharactersDetailsComponent implements OnInit {
   getVehicleDetails(vehicleUrl: String[]) {
     this.loaderService.isLoading.next(true);
     this.swapiService.getDetailsById(vehicleUrl).subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       this.personDetails['vehicle_details'] = res.flatMap((x: any) => x?.name);
       this.loaderService.isLoading.next(false)
     })
@@ -89,7 +89,7 @@ export class CharactersDetailsComponent implements OnInit {
   getStarShipDetails(vehicleUrl: String[]) {
     this.loaderService.isLoading.next(true);
     this.swapiService.getDetailsById(vehicleUrl).subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       this.personDetails['starship_details'] = res.flatMap((x: any) => x?.name);
       this.loaderService.isLoading.next(false);
     })
