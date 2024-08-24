@@ -6,9 +6,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 You have to install Node.js in your system. For that download node package installer from 'https://nodejs.org/en/download/prebuilt-installer' and install.
 
-Open command prompt and run 'npm i -g @angular/cli' for installing angular globally in your local system.
+Open command prompt and run `npm i -g @angular/cli` for installing angular globally in your local system.
 
-Clone the project by running the command 'git clone https://github.com/Khitish01/Star-Wars.git' and go to the root directory of the project and open command prompt. Run Command 'npm install'. 
+Clone the project by running the command 'git clone https://github.com/Khitish01/Star-Wars.git' and go to the root directory of the project and open command prompt. Run Command `npm install`. 
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
