@@ -1,0 +1,114 @@
+<div class="flex flex-wrap justify-content-between align-items-end bg-green-500 p-5 mb-5">
+    <h1 class="text-5xl font-bold text-white-alpha-90 m-0 ml-5">STAR WARS</h1>
+    <p class="text-base font-bold text-white-alpha-90 mr-5">THE SWAPI PROJECT</p>
+</div>
+<div class="flex justify-content-center align-items-center">
+    <div class="flex flex-wrap w-11">
+        <div class="md:col-3 col-12">
+            <div class="card p-5 border-round-md">
+                <div class="flex flex-wrap w-full align-items-center justify-content-center">
+                    <div class="col-12 text-center ">
+                        <h1 class="m-0 text-green-500 text-2xl">FILTERS</h1>
+                    </div>
+                    <div class="md:col-12 col-6">
+                        <p-multiSelect [options]="planetData" [styleClass]="'w-full mt-3 '" placeholder="Planet"
+                            [(ngModel)]="selectedPlanet" optionLabel="name" display="chip"
+                            [showClear]="true"></p-multiSelect>
+                    </div>
+                    <div class="md:col-12 col-6">
+                        <p-multiSelect [options]="movieData" [styleClass]="'w-full mt-3'" placeholder="Movie"
+                            [(ngModel)]="selectedMovie" optionLabel="title" display="chip"
+                            [showClear]="true"></p-multiSelect>
+                    </div>
+                    <div class="md:col-12 col-6">
+                        <p-multiSelect [options]="speciesData" [styleClass]="'w-full mt-3'" placeholder="Species"
+                            [(ngModel)]="selectedSpecies" optionLabel="name" display="chip"
+                            [showClear]="true"></p-multiSelect>
+                    </div>
+                    <div class="md:col-12 col-6">
+                        <p-multiSelect [options]="vehicleData" [styleClass]="'w-full mt-3'" placeholder="Vehicle"
+                            [(ngModel)]="selectedVehicle" optionLabel="name" display="chip"
+                            [showClear]="true"></p-multiSelect>
+                    </div>
+                    <div class="md:col-12 col-6">
+                        <p-multiSelect [options]="starshipData" [styleClass]="'w-full mt-3'" placeholder="Star Ship"
+                            [(ngModel)]="selectedStarShip" optionLabel="name" display="chip"
+                            [showClear]="true"></p-multiSelect>
+                    </div>
+                    <div class="md:col-12 col-6">
+                        <p-multiSelect [options]="birthDateArr" [styleClass]="'w-full mt-3'" placeholder="Birth Year"
+                            [(ngModel)]="selectedBirthDate" optionLabel="" display="chip"
+                            [showClear]="true"></p-multiSelect>
+                    </div>
+                    <div class="md:col-12 col-6 text-center">
+                        <div class="flex justify-content-center">
+                            <div class="flex justify-content-center">
+                                <div class="col-6">
+                                    <p-button label="Search" severity="success"
+                                        (onClick)="filterPeopleData()"></p-button>
+                                </div>
+                                <div class="col-6">
+                                    <p-button label="Reset" severity="success" (onClick)="resetFilter()"></p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="md:col-9 col-12">
+            <div class="card p-5 border-round-md">
+                <p class="font-bold text-xl m-0 text-green-500">SEARCH RESULTS</p>
+                <p class="mt-0 text-sm text-gray-500 font-semibold font-italic">(By Default this table will have all
+                    data)</p>
+                <p-table #dt1 [value]="peopleData" [scrollable]="true" scrollHeight="550px" [paginator]="true"
+                    [rows]="15" [showCurrentPageReport]="true"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [rowsPerPageOptions]="[15, 30, 50, 100]" [globalFilterFields]="['name']" [tableStyle]="{}">
+                    <!-- <ng-template pTemplate="caption">
+                            <div class="flex">
+                                <span class="p-input-icon-left ml-auto">
+                                    <i class="pi pi-search"></i>
+                                    <input pInputText type="text" [(ngModel)]="search"
+                                        (input)="dt1.filterGlobal(search, 'contains')" placeholder="Search keyword" />
+                                </span>
+                            </div>
+                        </ng-template> -->
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width:25%">S.No</th>
+                            <th style="width:25%">Character Name</th>
+                            <!-- <th style="width:25%">Species</th> -->
+                            <th style="width:25%">Birth Year</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
+                        <tr>
+                            <td>{{ rowIndex + 1 }}</td>
+                            <td>
+                                <span (click)="openDetails(product?.url)"
+                                    class="cursor-pointer">{{product?.name}}</span>
+                            </td>
+                            <!-- <td>{{ product?.company }}</td> -->
+                            <td>{{ product?.birth_year }}</td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="3" style="text-align: center;">
+                                <div>
+                                    <img src="assets/No data.svg" class="border-round-xl w-5" alt="">
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (loaderService.loader) {
+
+<app-loader></app-loader>
+}
